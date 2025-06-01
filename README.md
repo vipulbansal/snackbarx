@@ -18,9 +18,21 @@ A lightweight, customizable Flutter package for displaying themed snackbars anyw
 
 ## Preview
 
-| Success | Error | Info |
-|---------|-------|------|
-| ![Success](https://via.placeholder.com/200x80/4CAF50/FFFFFF?text=✓+Success) | ![Error](https://via.placeholder.com/200x80/F44336/FFFFFF?text=✗+Error) | ![Info](https://via.placeholder.com/200x80/2196F3/FFFFFF?text=ⓘ+Info) |
+```dart
+// Success snackbar - Green background with checkmark icon
+SnackbarX.showSuccess('Operation completed successfully!');
+
+// Error snackbar - Red background with error icon  
+SnackbarX.showError('Something went wrong!');
+
+// Info snackbar - Blue background with info icon
+SnackbarX.showInfo('Here is some useful information');
+```
+
+**Visual appearance:**
+- **Success**: Green background (#4CAF50) with white checkmark icon
+- **Error**: Red background (#F44336) with white error icon  
+- **Info**: Blue background (#2196F3) with white info icon
 
 ## Installation
 
