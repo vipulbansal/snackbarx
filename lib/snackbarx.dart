@@ -1,7 +1,5 @@
 /// A lightweight, customizable snackbar utility for global use across Flutter apps.
 library snackbarx;
-
-import 'package:flutter/material.dart';
 import 'package:snackbarx/snackbar_x_manager.dart';
 
 import 'models/snackbar_config.dart';
