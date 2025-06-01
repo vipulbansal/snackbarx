@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: https://github.com/vipulbansal/snackbarx#readme
+    about: Read the complete documentation and API reference
+  - name: 💬 Discussions
+    url: https://github.com/vipulbansal/snackbarx/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 📦 pub.dev Package
+    url: https://pub.dev/packages/snackbarx
+    about: View package details and examples on pub.dev

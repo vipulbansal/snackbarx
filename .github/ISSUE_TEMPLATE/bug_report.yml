@@ -1,0 +1,153 @@
+name: Bug Report
+description: Report a bug or issue with SnackbarX
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a bug! Please fill out this form to help us understand and fix the issue.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: Describe what went wrong...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Please provide detailed steps to reproduce the issue
+      placeholder: |
+        1. Initialize SnackbarX with...
+        2. Call SnackbarX.showSuccess()...
+        3. Observe the error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: The snackbar should appear with...
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+      placeholder: Instead, the app crashed with...
+    validations:
+      required: true
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Code Sample
+      description: Please provide a minimal code sample that reproduces the issue
+      render: dart
+      placeholder: |
+        ```dart
+        // Your code here
+        SnackbarX.showSuccess('Test message', context: context);
+        ```
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Logs
+      description: If applicable, add any error messages or stack traces
+      render: shell
+      placeholder: Paste error logs here...
+    validations:
+      required: false
+
+  - type: input
+    id: flutter_version
+    attributes:
+      label: Flutter Version
+      description: What version of Flutter are you using?
+      placeholder: "3.16.0"
+    validations:
+      required: true
+
+  - type: input
+    id: dart_version
+    attributes:
+      label: Dart Version
+      description: What version of Dart are you using?
+      placeholder: "3.2.0"
+    validations:
+      required: true
+
+  - type: input
+    id: package_version
+    attributes:
+      label: SnackbarX Version
+      description: What version of SnackbarX are you using?
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: Which platform(s) are affected?
+      multiple: true
+      options:
+        - Android
+        - iOS
+        - Web
+        - Windows
+        - macOS
+        - Linux
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device_type
+    attributes:
+      label: Device Type
+      description: What type of device are you testing on?
+      options:
+        - Physical Device
+        - Emulator/Simulator
+        - Both
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here
+      placeholder: Any additional information that might help...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Please confirm the following
+      options:
+        - label: I have searched for existing issues
+          required: true
+        - label: I have added the navigator key to MaterialApp
+          required: false
+        - label: I have called SnackbarX.init() before showing snackbars
+          required: false
+        - label: I am using TickerProviderStateMixin where needed
+          required: false

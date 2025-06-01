@@ -334,7 +334,35 @@ Check out the [example](example/) folder for a complete working implementation s
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+We welcome contributions! Here's how you can help:
+
+- **🐛 Report bugs** using our [bug report template](https://github.com/vipulbansal/snackbarx/issues/new?assignees=&labels=bug%2Ctriage&template=bug_report.yml)
+- **💡 Request features** using our [feature request template](https://github.com/vipulbansal/snackbarx/issues/new?assignees=&labels=enhancement%2Cfeature-request&template=feature_request.yml)
+- **❓ Ask questions** using our [question template](https://github.com/vipulbansal/snackbarx/issues/new?assignees=&labels=question%2Chelp-wanted&template=question.yml)
+- **📝 Improve documentation** by submitting pull requests
+- **🔧 Submit code changes** following our guidelines
+
+Please read our [Contributing Guide](CONTRIBUTING.md) for detailed information about development setup, coding standards, and the pull request process.
+
+## Issues and Support
+
+### Reporting Issues
+
+Before creating a new issue, please:
+
+1. **Search existing issues** to avoid duplicates
+2. **Check the documentation** and troubleshooting section
+3. **Use the appropriate issue template**:
+   - [Bug Report](https://github.com/vipulbansal/snackbarx/issues/new?assignees=&labels=bug%2Ctriage&template=bug_report.yml) - For bugs and unexpected behavior
+   - [Feature Request](https://github.com/vipulbansal/snackbarx/issues/new?assignees=&labels=enhancement%2Cfeature-request&template=feature_request.yml) - For new feature suggestions  
+   - [Question](https://github.com/vipulbansal/snackbarx/issues/new?assignees=&labels=question%2Chelp-wanted&template=question.yml) - For usage help and questions
+
+### Getting Help
+
+- 📖 Read the [documentation](#readme) and [API reference](#api-reference)
+- 🔍 Check [existing issues](https://github.com/vipulbansal/snackbarx/issues) and discussions
+- 💬 Join [GitHub Discussions](https://github.com/vipulbansal/snackbarx/discussions) for community help
+- ❓ Create a [question issue](https://github.com/vipulbansal/snackbarx/issues/new?assignees=&labels=question%2Chelp-wanted&template=question.yml) if you need specific help
 
 ## License
 
@@ -344,8 +372,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 See [CHANGELOG.md](CHANGELOG.md) for a detailed list of changes and updates.
 
-## Support
+## Support the Project
 
-If you like this package, please give it a ⭐ on [GitHub](https://github.com/yourusername/snackbarx) and a 👍 on [pub.dev](https://pub.dev/packages/snackbarx)!
+If you find SnackbarX helpful:
 
-For questions or issues, please file them on the [GitHub Issues](https://github.com/yourusername/snackbarx/issues) page.
+- ⭐ Star the repository on [GitHub](https://github.com/vipulbansal/snackbarx)
+- 👍 Like the package on [pub.dev](https://pub.dev/packages/snackbarx)
+- 📢 Share it with other developers
+- 🤝 Contribute to the project
+
+Your support helps maintain and improve SnackbarX for everyone!

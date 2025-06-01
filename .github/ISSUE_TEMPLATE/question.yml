@@ -1,0 +1,71 @@
+name: Question or Help
+description: Ask a question about using SnackbarX
+title: "[Question]: "
+labels: ["question", "help-wanted"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question about using SnackbarX? We're here to help! Please provide as much detail as possible.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know about SnackbarX?
+      placeholder: How do I...?
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_tried
+    attributes:
+      label: What Have You Tried?
+      description: What approaches have you already attempted?
+      placeholder: I tried following the documentation but...
+    validations:
+      required: false
+
+  - type: textarea
+    id: code_context
+    attributes:
+      label: Code Context
+      description: Please share relevant code if applicable
+      render: dart
+      placeholder: |
+        ```dart
+        // Your current code
+        ```
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected_outcome
+    attributes:
+      label: Expected Outcome
+      description: What are you trying to achieve?
+      placeholder: I want to show a snackbar that...
+    validations:
+      required: false
+
+  - type: input
+    id: package_version
+    attributes:
+      label: SnackbarX Version
+      description: What version of SnackbarX are you using?
+      placeholder: "1.0.0"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Please confirm the following
+      options:
+        - label: I have read the README documentation
+          required: true
+        - label: I have searched for existing issues and discussions
+          required: true
