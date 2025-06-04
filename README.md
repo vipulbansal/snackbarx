@@ -51,15 +51,20 @@ flutter pub get
 
 ## Quick Start
 
-### 1. Setup
+### 1. Simple Setup (One-time)
 
-First, add the navigator key to your MaterialApp and initialize SnackbarX:
+Add the navigator key to your MaterialApp and initialize in main:
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:snackbarx/snackbarx.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize SnackbarX once at app startup
+  SnackbarX.init();
+  
   runApp(MyApp());
 }
 
@@ -67,60 +72,66 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My App',
       navigatorKey: SnackbarX.navigatorKey, // Add this line
       home: HomePage(),
     );
   }
 }
-```
 
-### 2. Initialize in your main widget
-
-```dart
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  @override
-  void initState() {
-    super.initState();
-    // Initialize SnackbarX
-    SnackbarX.init(
-      navigatorKey: SnackbarX.navigatorKey,
-      tickerProvider: this,
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        // Show snackbar from anywhere - no context needed!
+        SnackbarX.showSuccess('Operation completed successfully!');
+      },
+      child: Text('Show Success'),
     );
   }
-  
-  // Your widget code here
 }
 ```
 
-### 3. Show snackbars
+### 2. Usage Examples
+
+After setup, use SnackbarX anywhere in your app:
 
 ```dart
 // Success message
-SnackbarX.showSuccess(
-  'Operation completed successfully!',
-  context: context,
-  tickerProvider: this,
-);
+SnackbarX.showSuccess('File saved successfully!');
 
 // Error message
-SnackbarX.showError(
-  'Something went wrong!',
-  context: context,
-  tickerProvider: this,
-);
+SnackbarX.showError('Connection failed');
 
 // Info message
-SnackbarX.showInfo(
-  'Here is some useful information',
-  context: context,
-  tickerProvider: this,
-);
+SnackbarX.showInfo('Update available');
+
+// Use from any function, even without widgets
+void saveData() {
+  // ... save logic
+  SnackbarX.showSuccess('Data saved!');
+}
+```
+
+### 3. Alternative: Context-Based Usage
+
+If you prefer not to use global setup, you can pass context directly:
+
+```dart
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        SnackbarX.showSuccess(
+          'Operation completed!',
+          context: context, // Pass context directly
+        );
+      },
+      child: Text('Show Success'),
+    );
+  }
+}
 ```
 
 ## Advanced Usage
@@ -132,8 +143,6 @@ Customize the appearance and behavior of your snackbars:
 ```dart
 SnackbarX.showSuccess(
   'Custom styled message',
-  context: context,
-  tickerProvider: this,
   config: SnackbarConfig(
     position: SnackbarPosition.top,
     duration: Duration(seconds: 5),
@@ -155,8 +164,6 @@ Add interactive action buttons to your snackbars:
 ```dart
 SnackbarX.showError(
   'Connection failed',
-  context: context,
-  tickerProvider: this,
   config: SnackbarConfig(
     actionLabel: 'RETRY',
     onActionPressed: () {
@@ -174,25 +181,17 @@ SnackbarX.showError(
 // Top position
 SnackbarX.showInfo(
   'Message at the top',
-  context: context,
-  tickerProvider: this,
   config: SnackbarConfig(position: SnackbarPosition.top),
 );
 
 // Center position
 SnackbarX.showInfo(
   'Message in the center',
-  context: context,
-  tickerProvider: this,
   config: SnackbarConfig(position: SnackbarPosition.center),
 );
 
 // Bottom position (default)
-SnackbarX.showInfo(
-  'Message at the bottom',
-  context: context,
-  tickerProvider: this,
-);
+SnackbarX.showInfo('Message at the bottom');
 ```
 
 ### Animation Types
@@ -201,32 +200,24 @@ SnackbarX.showInfo(
 // Slide animation
 SnackbarX.showSuccess(
   'Slides in smoothly',
-  context: context,
-  tickerProvider: this,
   config: SnackbarConfig(animationType: SnackbarAnimationType.slideUp),
 );
 
 // Fade animation
 SnackbarX.showSuccess(
   'Fades in gently',
-  context: context,
-  tickerProvider: this,
   config: SnackbarConfig(animationType: SnackbarAnimationType.fade),
 );
 
 // Scale animation
 SnackbarX.showSuccess(
   'Pops in with style',
-  context: context,
-  tickerProvider: this,
   config: SnackbarConfig(animationType: SnackbarAnimationType.scale),
 );
 
 // Combined slide and fade
 SnackbarX.showSuccess(
   'Best of both worlds',
-  context: context,
-  tickerProvider: this,
   config: SnackbarConfig(animationType: SnackbarAnimationType.slideAndFade),
 );
 ```
@@ -309,36 +300,40 @@ Global navigator key for accessing the overlay. Add this to your MaterialApp.
 ```dart
 // Make sure you added the navigator key to MaterialApp
 MaterialApp(
-  navigatorKey: SnackbarX.navigatorKey, // Don't forget this!
+  navigatorKey: SnackbarX.navigatorKey, // Required for global access
   home: MyHomePage(),
 )
 ```
 
-**"SnackbarX not initialized" error:**
+**Package not working:**
 ```dart
-// Call init() in your widget's initState
-@override
-void initState() {
-  super.initState();
-  SnackbarX.init(tickerProvider: this);
-}
+// Ensure you import the package
+import 'package:snackbarx/snackbarx.dart';
+
+// Use the simple API
+SnackbarX.showSuccess('Your message here');
 ```
 
-**Animations not working:**
+**Want smoother animations?**
 ```dart
-// Make sure your State class uses TickerProviderStateMixin
+// Pass a TickerProvider when available
 class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
-  // Your code here
+  void showMessage() {
+    SnackbarX.showSuccess(
+      'Message with smooth animation',
+      tickerProvider: this,
+    );
+  }
 }
 ```
 
 ### Best Practices
 
-1. **Always initialize**: Call `SnackbarX.init()` before showing snackbars
-2. **Use TickerProviderStateMixin**: For smooth animations
-3. **Provide context and tickerProvider**: For best reliability
-4. **Keep messages concise**: Short, clear messages work best
-5. **Use appropriate types**: Match the message type to its content
+1. **Add navigator key**: Required in MaterialApp for global access
+2. **Keep messages short**: Concise text works best
+3. **Use appropriate types**: Match success/error/info to context
+4. **Optional ticker provider**: Only add if you want extra smooth animations
+5. **No initialization needed**: Package auto-initializes on first use
 
 ## Example
 
