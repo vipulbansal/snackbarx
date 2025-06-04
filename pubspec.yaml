@@ -1,6 +1,6 @@
 name: snackbarx
 description: A lightweight, customizable Flutter package for displaying themed snackbars anywhere in your app without requiring BuildContext.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/vipulbansal/snackbarx
 repository: https://github.com/vipulbansal/snackbarx
 issue_tracker: https://github.com/vipulbansal/snackbarx/issues
