@@ -48,11 +48,7 @@ class BaseSnackbar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             // Icon
-            Icon(
-              iconData,
-              color: iconColor,
-              size: 24,
-            ),
+            Icon(iconData, color: iconColor, size: 24),
             const SizedBox(width: 12),
 
             // Message
@@ -70,7 +66,8 @@ class BaseSnackbar extends StatelessWidget {
             ),
 
             // Action button if provided
-            if (config.actionLabel != null && config.onActionPressed != null) ...[
+            if (config.actionLabel != null &&
+                config.onActionPressed != null) ...[
               const SizedBox(width: 8),
               TextButton(
                 onPressed: config.onActionPressed,
@@ -81,9 +78,7 @@ class BaseSnackbar extends StatelessWidget {
                 ),
                 child: Text(
                   config.actionLabel!,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -92,12 +87,13 @@ class BaseSnackbar extends StatelessWidget {
             if (config.showCloseButton) ...[
               const SizedBox(width: 4),
               IconButton(
-                icon: Icon(Icons.close, color: textColor.withOpacity(0.7), size: 20),
-                padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(
-                  minWidth: 32,
-                  minHeight: 32,
+                icon: Icon(
+                  Icons.close,
+                  color: textColor.withAlpha((0.7 * 255).toInt()),
+                  size: 20,
                 ),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
                 onPressed: onDismiss,
               ),
             ],

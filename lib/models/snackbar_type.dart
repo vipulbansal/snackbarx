@@ -50,6 +50,6 @@ extension SnackbarTypeExtension on SnackbarType {
   
   /// Get the default icon color for this snackbar type
   Color get iconColor {
-    return Colors.white.withOpacity(0.9);
+    return Colors.white.withAlpha((0.9 * 255).toInt());
   }
 }

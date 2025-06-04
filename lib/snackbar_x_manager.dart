@@ -93,9 +93,11 @@ class SnackbarXManager {
     TickerProvider? vsync;
     if (_navigatorKey?.currentState != null) {
       vsync = _navigatorKey!.currentState as TickerProvider;
-    } else if (overlayState is TickerProvider) {
-      vsync = overlayState as TickerProvider;
-    } else {
+    }
+    // else if (overlayState is TickerProvider) {
+    //   vsync = overlayState as TickerProvider;
+    // }
+    else {
       throw Exception('Could not find a suitable TickerProvider for animations.');
     }
 
