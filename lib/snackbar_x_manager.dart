@@ -12,9 +12,6 @@ class SnackbarXManager {
   /// Private constructor
   SnackbarXManager._();
 
-  /// Global overlay key to maintain reference
-  final GlobalKey<OverlayState> overlayKey = GlobalKey<OverlayState>();
-
   /// Current overlay entry
   OverlayEntry? _currentOverlayEntry;
 
@@ -64,9 +61,9 @@ class SnackbarXManager {
       overlayState = Overlay.of(context);
     }
 
-    // Next try using the navigator key if available
-    if (overlayState == null && _navigatorKey?.currentContext != null) {
-      overlayState = Overlay.of(_navigatorKey!.currentContext!);
+    // Next use the overlay owned by the configured navigator (not an ancestor of its context).
+    if (overlayState == null && _navigatorKey?.currentState != null) {
+      overlayState = _navigatorKey!.currentState!.overlay;
     }
 
     // Finally, try using the global navigator state
@@ -89,16 +86,13 @@ class SnackbarXManager {
       );
     }
 
-    // Get the ticker provider from the navigator state or overlay state
-    TickerProvider? vsync;
-    if (_navigatorKey?.currentState != null) {
-      vsync = _navigatorKey!.currentState as TickerProvider;
-    }
-    // else if (overlayState is TickerProvider) {
-    //   vsync = overlayState as TickerProvider;
-    // }
-    else {
-      throw Exception('Could not find a suitable TickerProvider for animations.');
+    // Prefer the configured navigator; otherwise use the navigator above this overlay.
+    final TickerProvider? vsync = _tickerProviderFor(overlayState);
+    if (vsync == null) {
+      throw Exception(
+        'Could not find a suitable TickerProvider for animations. '
+        'Use SnackbarX.init(navigatorKey: ...) matching MaterialApp.navigatorKey.',
+      );
     }
 
     // Create a new controller for this snackbar
@@ -153,6 +147,16 @@ class SnackbarXManager {
     // Dispose the animation controller
     _animationController?.dispose();
     _animationController = null;
+  }
+
+  TickerProvider? _tickerProviderFor(OverlayState overlay) {
+    final keyState = _navigatorKey?.currentState;
+    if (keyState != null) {
+      return keyState as TickerProvider;
+    }
+    final navigator =
+        Navigator.maybeOf(overlay.context, rootNavigator: true);
+    return navigator as TickerProvider?;
   }
 
   /// Attempts to find a global navigator state

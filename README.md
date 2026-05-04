@@ -40,7 +40,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  snackbarx: ^1.0.0
+  snackbarx: ^1.1.0
 ```
 
 Then run:

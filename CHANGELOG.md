@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-05-04
+
+### Added
+
+- `SnackbarX.navigatorKey` for `MaterialApp.navigatorKey` and context-free `show*` calls after `SnackbarX.init()`.
+- Optional `BuildContext? context` on `showSuccess`, `showError`, `showInfo`, and `show` when not using the default navigator key.
+
+### Fixed
+
+- Resolve overlay via `NavigatorState.overlay` when using a `GlobalKey<NavigatorState>` (avoids invalid `Overlay.of(navigatorContext)` usage).
+- Resolve `TickerProvider` from the navigator above the overlay when the configured key is not used.
+
+### Changed
+
+- Raised minimum SDK to Dart **3.11.5** and Flutter **3.41.0** (aligned with current stable tooling).
+- `flutter_lints` **^6.0.0**; example uses scrollable body to avoid layout overflow in tests; root and example tests updated.
+
 ## [1.0.0] - 2024-06-01
 ## [1.0.1] - 2024-06-01
 - Updated Readme.
@@ -78,4 +95,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Interactive element examples
 - Custom styling demonstrations
 
-[1.0.0]: https://github.com/yourusername/snackbarx/releases/tag/v1.0.0
+[1.1.0]: https://github.com/vipulbansal/snackbarx/releases/tag/v1.1.0
+[1.0.0]: https://github.com/vipulbansal/snackbarx/releases/tag/v1.0.0

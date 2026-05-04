@@ -18,12 +18,12 @@ class BaseSnackbar extends StatelessWidget {
 
   /// Creates a base snackbar widget
   const BaseSnackbar({
-    Key? key,
+    super.key,
     required this.message,
     required this.type,
     required this.config,
     required this.onDismiss,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class BaseSnackbar extends StatelessWidget {
     final textColor = config.textColor ?? type.textColor;
     final iconData = config.icon ?? type.icon;
     final iconColor = config.iconColor ?? type.iconColor;
-    Size _screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.sizeOf(context);
 
     return Material(
       elevation: config.elevation,
@@ -39,7 +39,7 @@ class BaseSnackbar extends StatelessWidget {
       color: backgroundColor,
       child: Container(
         constraints: BoxConstraints(
-          maxWidth: config.maxWidth ?? _screenSize.width * 0.8,
+          maxWidth: config.maxWidth ?? screenSize.width * 0.8,
           minWidth: config.minWidth ?? 0,
         ),
         margin: config.margin,

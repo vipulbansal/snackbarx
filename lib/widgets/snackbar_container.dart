@@ -22,13 +22,13 @@ class SnackbarContainer extends StatefulWidget {
 
   /// Creates a snackbar container
   const SnackbarContainer({
-    Key? key,
+    super.key,
     required this.message,
     required this.type,
     required this.config,
     required this.animationController,
     required this.onDismiss,
-  }) : super(key: key);
+  });
 
   @override
   State<SnackbarContainer> createState() => _SnackbarContainerState();
